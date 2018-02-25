@@ -3,6 +3,8 @@ package ru.ratanov.kinomantv;
 import android.app.Activity;
 import android.os.Bundle;
 
+import ru.ratanov.kinomantv.parser.Cookies;
+
 public class MainActivity extends Activity {
 
     @Override

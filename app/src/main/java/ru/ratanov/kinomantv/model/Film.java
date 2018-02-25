@@ -6,6 +6,7 @@ public class Film {
     private String title;
     private String genre;
     private String description;
+    private String magnet;
 
     public Film() {
     }
@@ -40,5 +41,13 @@ public class Film {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getMagnet() {
+        return magnet;
+    }
+
+    public void setMagnet(String magnet) {
+        this.magnet = magnet;
     }
 }
