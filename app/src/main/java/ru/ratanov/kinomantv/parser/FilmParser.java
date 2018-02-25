@@ -63,33 +63,6 @@ public class FilmParser {
             }
         }
 
-        private Map<String, String> getCookies() {
-
-            Connection.Response response;
-
-            try {
-                response = Jsoup
-                        .connect("https://kinozal-tv.appspot.com/login.php")
-                        .method(Connection.Method.GET)
-                        .execute();
-
-                response = Jsoup
-                        .connect("https://kinozal-tv.appspot.com/takelogin.php")
-                        .cookies(response.cookies())
-                        .data("username", "rbaloo")
-                        .data("password", "756530")
-                        .method(Connection.Method.POST)
-                        .followRedirects(true)
-                        .execute();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-
-
-            return response.cookies();
-        }
-
         private void fillHashMap(String html) {
             Document doc = Jsoup.parse(html);
             doc.outputSettings(new Document.OutputSettings().prettyPrint(false));
