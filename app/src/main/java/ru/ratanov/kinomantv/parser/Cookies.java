@@ -12,7 +12,7 @@ public class Cookies {
 
     private static Map<String, String> cookies = null;
 
-    static Map<String, String> getCookies() {
+    public static Map<String, String> getCookies() {
         if (cookies == null) {
            cookies = updateCookies();
         }

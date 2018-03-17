@@ -12,6 +12,7 @@ import android.support.v17.leanback.widget.OnItemViewClickedListener;
 import android.support.v17.leanback.widget.Presenter;
 import android.support.v17.leanback.widget.Row;
 import android.support.v17.leanback.widget.RowPresenter;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class MainFragment extends BrowseFragment {
 
         loadRows();
 
-        setOnItemViewClickedListener(new ItemViewClickedListener());
+        setupEventListeners();
     }
 
     private void setupUIElements() {
@@ -42,6 +43,18 @@ public class MainFragment extends BrowseFragment {
         setHeadersTransitionOnBackEnabled(true);
         setBrandColor(getResources().getColor(R.color.fastlane_background));
         setSearchAffordanceColor(getResources().getColor(R.color.search_opaque));
+    }
+
+    private void setupEventListeners() {
+        setOnItemViewClickedListener(new ItemViewClickedListener());
+        // Search
+        setOnSearchClickedListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadRows() {

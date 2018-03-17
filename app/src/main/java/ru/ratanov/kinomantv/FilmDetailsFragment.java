@@ -93,7 +93,12 @@ public class FilmDetailsFragment extends DetailsFragment {
                         intent.addCategory(Intent.CATEGORY_DEFAULT);
                         intent.setType("application/x-bittorrent");
                         intent.setData(Uri.parse(mFilm.getMagnet()));
-                        getActivity().startActivity(intent);
+
+                        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                            getActivity().startActivity(intent);
+                        } else {
+                            Toast.makeText(getActivity(), "Нет установленных приложений для обработки magnet-ссылок", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             });

@@ -2,6 +2,7 @@ package ru.ratanov.kinomantv.util;
 
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
@@ -74,5 +75,11 @@ public class Utils {
             result += "0" + sec;
         }
         return result;
+    }
+
+    public static boolean hasPermission(Context context, String permission) {
+        return PackageManager.PERMISSION_GRANTED == context.getPackageManager().checkPermission(
+                permission, context.getPackageName()
+        );
     }
 }
