@@ -12,3 +12,12 @@
 
 Скриншоты
 -----------------------------------
+![](https://drive.google.com/uc?id=1nYOwF5eg-OZUGtiXNZPFeMHuAjiPMORL)
+
+Скачать
+-----------------------------------
+Скачать и обсудить приложение на форуме [4PDA](http://4pda.ru/forum/index.php?showtopic=893787)
+
+Android Mobile
+-----------------------------------
+Версия для Смартфонов - [здесь](https://github.com/ratanoff/Kinoman)
