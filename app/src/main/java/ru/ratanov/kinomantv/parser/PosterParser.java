@@ -45,7 +45,7 @@ public class PosterParser {
 
             List<FilmPoster> filmPosters = new ArrayList<>();
 
-            String url = "https://kinozal-tv.appspot.com/top.php?t=" + params[0];
+            String url = "https://kinozal.guru/top.php?t=" + params[0];
 
             Log.i(TAG, "doInBackground: " + url);
 
@@ -58,8 +58,17 @@ public class PosterParser {
                 Elements elements = doc.select("div.bx1").select("a");
                 Log.i(TAG, "doInBackground: elements.size() = " + elements.size());
                 for (Element entry : elements) {
-                    String posterUrl = entry.select("a").select("img").attr("src");
                     String link = entry.select("a").attr("href");
+
+                    String tmp = entry.select("a").select("img").attr("src");
+
+                    String posterUrl;
+
+                    if (tmp.contains("poster")) {
+                        posterUrl = "https://kinozal.guru" + tmp;
+                    } else {
+                        posterUrl = tmp;
+                    }
 
                     FilmPoster filmPoster = new FilmPoster();
                     filmPoster.setPosterUrl(posterUrl);

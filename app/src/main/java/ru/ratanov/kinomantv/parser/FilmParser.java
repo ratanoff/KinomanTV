@@ -34,7 +34,7 @@ public class FilmParser {
         @Override
         protected Film doInBackground(String... params) {
 
-            String url = "https://kinozal-tv.appspot.com" + params[0];
+            String url = "https://kinozal.guru" + params[0];
 
             try {
                 Document doc = Jsoup
@@ -48,12 +48,27 @@ public class FilmParser {
                 film.setTitle(doc.select("h1").text());
                 film.setGenre(getPair("Жанр"));
                 film.setDescription(doc.select("div.bx1.justify").select("p").text());
-                film.setPosterUrl(doc.select("img.p200").attr("src"));
 
-                String magnetUrl = url.replace("https://kinozal-tv.appspot.com/details.php",
-                        "https://s-kinozal-tv.appspot.com/getmagnet?");
-                doc = Jsoup.connect(magnetUrl).get();
-                String magnetLink = doc.select("a").first().attr("href");
+                String tmp = doc.select("img.p200").attr("src");
+
+                String posterUrl;
+
+                if (tmp.contains("poster")) {
+                    posterUrl = "https://kinozal.guru" + tmp;
+                } else {
+                    posterUrl = tmp;
+                }
+
+                film.setPosterUrl(posterUrl);
+
+                String magnetUrl = url.replace("details.php?",
+                        "get_srv_details.php?action=2&");
+                doc = Jsoup
+                        .connect(magnetUrl)
+                        .cookies(Cookies.getCookies())
+                        .get();
+                String magnetLink = doc.select("ul").select("li").first().text().replace("Инфо хеш: ",
+                        "magnet:?xt=urn:btih:");
                 film.setMagnet(magnetLink);
 
                 return film;

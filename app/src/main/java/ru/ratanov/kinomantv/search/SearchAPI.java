@@ -32,7 +32,7 @@ public class SearchAPI {
 
     private static class SearchTask extends AsyncTask<String, Void, List<SearchItem>> {
 
-        private static final String BASE_URL_SEARCH = "https://kinozal-tv.appspot.com/browse.php";
+        private static final String BASE_URL_SEARCH = "https://kinozal.guru/browse.php";
 
         private List<SearchItem> mSearchItems = new ArrayList<>();
 
