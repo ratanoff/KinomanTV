@@ -45,7 +45,7 @@ public class PosterParser {
 
             List<FilmPoster> filmPosters = new ArrayList<>();
 
-            String url = "https://kinozal.guru/top.php?t=" + params[0];
+            String url = "http://kinozal.tv.http.s71.wbprx.com/top.php?t=" + params[0];
 
             Log.i(TAG, "doInBackground: " + url);
 
@@ -65,7 +65,7 @@ public class PosterParser {
                     String posterUrl;
 
                     if (tmp.contains("poster")) {
-                        posterUrl = "https://kinozal.guru" + tmp;
+                        posterUrl = "http://kinozal.tv.http.s71.wbprx.com" + tmp;
                     } else {
                         posterUrl = tmp;
                     }

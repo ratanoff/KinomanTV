@@ -34,7 +34,7 @@ public class FilmParser {
         @Override
         protected Film doInBackground(String... params) {
 
-            String url = "https://kinozal.guru" + params[0];
+            String url = "http://kinozal.tv.http.s71.wbprx.com" + params[0];
 
             try {
                 Document doc = Jsoup
@@ -54,7 +54,7 @@ public class FilmParser {
                 String posterUrl;
 
                 if (tmp.contains("poster")) {
-                    posterUrl = "https://kinozal.guru" + tmp;
+                    posterUrl = "http://kinozal.tv.http.s71.wbprx.com" + tmp;
                 } else {
                     posterUrl = tmp;
                 }
